@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <div style={{ paddingTop: '80px' }}>
+      <div className="app-shell">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<About />} />
