@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.app-shell {
+  padding-top: 96px;
+}
+
 .section {
   padding: 4rem 2rem;
   border-bottom: 3px solid var(--border-color);
@@ -700,6 +704,10 @@
    ============================ */
 @media (max-width: 768px) {
 
+  .app-shell {
+    padding-top: 80px;
+  }
+
   /* Sections */
   .section {
     padding: 3rem 1.25rem;
@@ -710,9 +718,14 @@
     padding: 0.75rem 1.25rem;
   }
 
+  .header-container {
+    gap: 0.75rem;
+  }
+
   /* Hero */
   .hero-title {
     font-size: clamp(2.5rem, 12vw, 4.5rem);
+    overflow-wrap: anywhere;
   }
 
   .hero-subtitle {
@@ -813,6 +826,7 @@
   /* Contact */
   .contact-link {
     font-size: clamp(1.5rem, 8vw, 3rem);
+    overflow-wrap: anywhere;
   }
 
   /* About — Skills Grid */
@@ -836,6 +850,10 @@
    ============================ */
 @media (max-width: 480px) {
 
+  .app-shell {
+    padding-top: 72px;
+  }
+
   .section {
     padding: 2rem 1rem;
   }
@@ -850,6 +868,7 @@
 
   .hero-title {
     font-size: clamp(2rem, 14vw, 3.5rem);
+    line-height: 0.95;
   }
 
   .hero-subtitle {
@@ -891,6 +910,11 @@
 
   .video-container iframe {
     height: 360px;
+  }
+
+  .exp-content p,
+  .card-desc {
+    overflow-wrap: anywhere;
   }
 
   .action-button {

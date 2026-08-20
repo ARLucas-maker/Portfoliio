@@ -55,7 +55,17 @@ function App() {
 
   return (
     <Router>
+<<<<<<< HEAD
       <AppShell />
+=======
+      <Header />
+      <div className="app-shell">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sobre" element={<About />} />
+        </Routes>
+      </div>
+>>>>>>> 48a23e91ba27a03394dcb24318f9827d7de1c032
     </Router>
   );
 }
