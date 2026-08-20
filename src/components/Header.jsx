@@ -4,6 +4,9 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'light';
+  });
   const location = useLocation();
 
   const whatsappNumber = "5511975115131";
@@ -26,6 +29,16 @@ const Header = () => {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
+  // Apply theme to document element
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
   return (
     <header className="header">
       <div className="header-container">
@@ -41,14 +54,25 @@ const Header = () => {
           <NavLink to="/sobre" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
             Conheça o Lucas
           </NavLink>
+          <NavLink to="/blog" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+            Blog
+          </NavLink>
         </nav>
 
         {/* Desktop Actions */}
         <div className="header-actions header-actions--desktop">
-          <a href={linkedinUrl} target="_blank" rel="noreferrer" className="action-link linkedin-action">
+          <button 
+            onClick={toggleTheme} 
+            className="theme-toggle-btn" 
+            aria-label="Alternar tema"
+            data-cursor-text={theme === 'light' ? 'ESCURO' : 'CLARO'}
+          >
+            {theme === 'light' ? '☾' : '☼'}
+          </button>
+          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="action-link linkedin-action">
             LinkedIn ↗
           </a>
-          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="action-button">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="action-button">
             Fale Comigo
           </a>
         </div>
@@ -83,13 +107,27 @@ const Header = () => {
           >
             Conheça o Lucas
           </NavLink>
+          <NavLink
+            to="/blog"
+            className={({ isActive }) => isActive ? "mobile-menu__link active" : "mobile-menu__link"}
+            onClick={() => setMenuOpen(false)}
+          >
+            Blog
+          </NavLink>
         </nav>
 
         <div className="mobile-menu__actions">
-          <a href={linkedinUrl} target="_blank" rel="noreferrer" className="mobile-menu__action-link">
+          <button 
+            onClick={toggleTheme} 
+            className="theme-toggle-btn mobile-theme-btn" 
+            aria-label="Alternar tema"
+          >
+            {theme === 'light' ? '☾ MODO ESCURO' : '☼ MODO CLARO'}
+          </button>
+          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="mobile-menu__action-link">
             LinkedIn ↗
           </a>
-          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="action-button mobile-menu__cta">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="action-button mobile-menu__cta">
             Fale Comigo
           </a>
         </div>

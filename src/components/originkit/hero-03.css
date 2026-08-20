@@ -1,0 +1,11 @@
+/* hero-03 — section-private CSS */
+
+@theme {
+  --font-instrument-serif: "Instrument Serif", Georgia, serif;
+  --font-tight: "Inter Tight", Inter, ui-sans-serif, sans-serif;
+}
+
+/* Garantir que o conteúdo do hero sempre seja visível */
+section[aria-label="Portrait perspective gallery"] [class*="z-20"] {
+  visibility: visible !important;
+}
