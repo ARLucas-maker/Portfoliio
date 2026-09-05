@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Sitemap: https://arlucas.com.br/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Disallow: /admin/
+Disallow: /api/

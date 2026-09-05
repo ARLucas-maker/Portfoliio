@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lucas A. R. - Strategic Marketing &amp; Data Performance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#e5e2e1",
+                      "surface": "#fcf9f8",
+                      "tertiary-container": "#c13301",
+                      "background": "#fcf9f8",
+                      "on-tertiary-fixed": "#3b0900",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#1c1b1b",
+                      "secondary": "#a04100",
+                      "secondary-fixed-dim": "#ffb693",
+                      "surface-container-low": "#f6f3f2",
+                      "inverse-surface": "#313030",
+                      "code-bg": "#0F172A",
+                      "inverse-primary": "#b6c4ff",
+                      "on-secondary-fixed-variant": "#7a3000",
+                      "primary": "#0041c8",
+                      "on-primary-fixed": "#001551",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-high": "#ebe7e7",
+                      "on-secondary-fixed": "#351000",
+                      "on-primary-container": "#e3e6ff",
+                      "on-secondary-container": "#572000",
+                      "on-surface-variant": "#434656",
+                      "on-surface": "#1c1b1b",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c3c5d9",
+                      "secondary-container": "#fe6b00",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary-fixed": "#ffdbd1",
+                      "on-primary-fixed-variant": "#0039b3",
+                      "border-subtle": "#E2E8F0",
+                      "text-secondary": "#686868",
+                      "tertiary": "#972500",
+                      "surface-muted": "#F5F7FA",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#872100",
+                      "surface-container": "#f0edec",
+                      "surface-dim": "#dcd9d9",
+                      "secondary-fixed": "#ffdbcc",
+                      "on-tertiary-container": "#ffe1d9",
+                      "on-primary": "#ffffff",
+                      "primary-container": "#0055ff",
+                      "outline": "#737688",
+                      "primary-fixed": "#dce1ff",
+                      "inverse-on-surface": "#f3f0ef",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb5a0",
+                      "primary-fixed-dim": "#b6c4ff",
+                      "surface-tint": "#004dea",
+                      "error": "#ba1a1a",
+                      "surface-bright": "#fcf9f8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px",
+                      "container-max": "1280px",
+                      "unit": "8px",
+                      "section-gap": "120px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-caps": ["Hanken Grotesk"],
+                      "label-code": ["JetBrains Mono"],
+                      "body-md": ["Hanken Grotesk"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "display": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "label-code": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Neo-brutalist custom utilities */
+        .neo-border { border: 4px solid #1c1b1b; }
+        .neo-shadow { box-shadow: 8px 8px 0px 0px #1c1b1b; }
+        .neo-shadow-sm { box-shadow: 4px 4px 0px 0px #1c1b1b; }
+        .neo-hover:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0px 0px #1c1b1b; }
+        .neo-active:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px 0px #1c1b1b; }
+        .transition-neo { transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-surface border-b-4 border-on-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]">
+<div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
+<a class="font-display text-headline-md font-extrabold text-on-background dark:text-surface" href="#">
+                Lucas A. R.
+            </a>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-on-surface dark:text-on-surface-variant font-body-md hover:bg-secondary-container dark:hover:bg-secondary hover:text-on-secondary-container transition-all px-4 py-2 rounded-DEFAULT active:translate-x-[2px] active:translate-y-[2px] active:shadow-none" href="#conheca">Conheça o Lucas</a>
+<a class="text-on-surface dark:text-on-surface-variant font-body-md hover:bg-secondary-container dark:hover:bg-secondary hover:text-on-secondary-container transition-all px-4 py-2 rounded-DEFAULT active:translate-x-[2px] active:translate-y-[2px] active:shadow-none" href="#servicos">Serviços</a>
+<a class="text-on-surface dark:text-on-surface-variant font-body-md hover:bg-secondary-container dark:hover:bg-secondary hover:text-on-secondary-container transition-all px-4 py-2 rounded-DEFAULT active:translate-x-[2px] active:translate-y-[2px] active:shadow-none" href="#blog">Blog &amp; Insights</a>
+</div>
+<a class="hidden md:flex bg-secondary-container text-white px-6 py-3 font-bold neo-border neo-shadow-sm neo-hover neo-active transition-neo items-center gap-2" href="https://wa.me/5511999999999">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+                WhatsApp CTA
+            </a>
+<button class="md:hidden p-2 neo-border bg-primary-container text-white neo-shadow-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center pt-20 pb-section-gap overflow-hidden">
+<!-- Shader Background -->
+<div class="absolute inset-0 z-0 opacity-20 mix-blend-multiply">
+<!-- STITCH_SHADER_START:ANIMATION_34 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_34" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_34');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 mouse = u_mouse / u_resolution;
+    
+    // Create a dynamic grid pattern with moving lines
+    float line1 = sin(uv.x * 20.0 + u_time * 0.5) * 0.5 + 0.5;
+    float line2 = cos(uv.y * 20.0 - u_time * 0.8) * 0.5 + 0.5;
+    
+    // Interaction with mouse
+    float dist = distance(uv, mouse);
+    float glow = smoothstep(0.4, 0.0, dist);
+    
+    // Base colors from the design system (#0055ff primary)
+    vec3 color1 = vec3(0.0, 0.33, 1.0); // Primary Blue
+    vec3 color2 = vec3(1.0, 0.4, 0.0);  // Accent Orange
+    vec3 bgColor = vec3(0.98, 0.97, 0.97); // Surface color
+    
+    float pattern = smoothstep(0.48, 0.5, line1 * line2);
+    vec3 finalColor = mix(bgColor, color1, pattern * 0.15);
+    finalColor += color2 * glow * 0.05;
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_34 -->
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-7 space-y-8">
+<div class="inline-flex items-center gap-2 bg-primary-container text-white px-4 py-2 neo-border neo-shadow-sm font-label-caps uppercase">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        Soluções Orientadas a Dados
+                    </div>
+<h1 class="font-display text-display md:text-[80px] leading-[0.9] font-extrabold uppercase tracking-tighter">
+                        Marketing Digital <br/>
+<span class="text-primary-container relative inline-block">
+                            Estratégico
+                            <svg class="absolute w-full h-4 -bottom-2 left-0 text-secondary-container" preserveaspectratio="none" viewbox="0 0 100 10"><path d="M0 5 Q 50 10 100 5" fill="none" stroke="currentColor" stroke-width="4"></path></svg>
+</span> <br/>
+                        &amp; Engenharia de Performance
+                    </h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl border-l-4 border-secondary-container pl-6 py-2">
+                        Transformando dados brutos em inteligência de mercado. Consultoria especializada em arquitetura de dados, SEO técnico e otimização de conversão para operações escaláveis.
+                    </p>
+<div class="pt-4 flex flex-col sm:flex-row gap-4">
+<a class="bg-primary-container text-white px-8 py-4 font-headline-md text-lg text-center neo-border neo-shadow neo-hover neo-active transition-neo flex-1 sm:flex-none" href="#contato">
+                            Solicitar Diagnóstico Estratégico
+                        </a>
+</div>
+</div>
+<div class="lg:col-span-5 relative mt-12 lg:mt-0">
+<div class="relative w-full aspect-[4/5] neo-border bg-surface-muted neo-shadow z-10">
+<img alt="Lucas Antignani Rizzieri" class="w-full h-full object-cover grayscale contrast-125" src="https://lh3.googleusercontent.com/aida/AP1WRLtmKxaP-abVHtH8-L43Y7SShUCixYQcSk94oH8psb5h10JMHhgct82mgY3FdBXgsQFAFMpTNf5J_lY67ISHpxijteSEZ-FaHLgA8J31AK9wio4nBg2xOpBA1nzx5ORYY1ZbhvfAIyuFvIA9JdlKuiNtl0Iq1n9PxMUjkxtbhoJCZtyTadodJQL73pzC_Wbn4H1Oa7bRejH3StOlSV-g-ro8fdJ7tUgnE-muuZzoBF4luCnTSLe0ZU_wZwg"/>
+<!-- Floating Tech Tag -->
+<div class="absolute -bottom-6 -left-6 bg-white neo-border p-4 neo-shadow-sm flex items-center gap-3">
+<div class="w-12 h-12 bg-secondary-container flex items-center justify-center rounded-full text-white">
+<span class="material-symbols-outlined">monitoring</span>
+</div>
+<div>
+<p class="font-label-caps text-on-surface-variant uppercase">Performance Insights</p>
+<p class="font-headline-md text-lg">Data-Driven UX</p>
+</div>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute top-1/2 -right-12 w-24 h-24 bg-primary-container neo-border neo-shadow-sm rounded-full -z-10 animate-[spin_10s_linear_infinite]">
+<svg class="w-full h-full text-white p-4" viewbox="0 0 100 100">
+<path d="M50 0 L100 50 L50 100 L0 50 Z" fill="currentColor"></path>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- Proof Bar -->
+<section class="border-y-4 border-on-background bg-secondary-container overflow-hidden py-6">
+<div class="flex whitespace-nowrap animate-[marquee_20s_linear_infinite]">
+<div class="flex items-center space-x-12 px-6 font-display text-headline-md text-on-background font-bold uppercase tracking-wider">
+<span>FIAP Honor (GPA 8.88)</span>
+<span class="material-symbols-outlined">star</span>
+<span>CRM &amp; Data Warehouse Architecture</span>
+<span class="material-symbols-outlined">star</span>
+<span>Enterprise SEO &amp; CRO</span>
+<span class="material-symbols-outlined">star</span>
+<!-- Duplicate for infinite loop effect -->
+<span>FIAP Honor (GPA 8.88)</span>
+<span class="material-symbols-outlined">star</span>
+<span>CRM &amp; Data Warehouse Architecture</span>
+<span class="material-symbols-outlined">star</span>
+<span>Enterprise SEO &amp; CRO</span>
+</div>
+</div>
+</section>
+<!-- Service Grid -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="servicos">
+<div class="mb-16 flex flex-col md:flex-row justify-between items-end gap-8 border-b-4 border-on-background pb-8">
+<div>
+<h2 class="font-display text-headline-lg-mobile md:text-headline-lg font-extrabold uppercase">Arquitetura de <br/>Crescimento</h2>
+</div>
+<p class="font-body-lg text-on-surface-variant max-w-md">Metodologias aplicadas para escalar operações B2B e B2C através de engenharia de dados e marketing técnico.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Service Card 1 -->
+<div class="bg-surface neo-border p-8 neo-shadow neo-hover transition-neo flex flex-col justify-between h-full group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-500"></div>
+<div>
+<span class="font-label-code text-primary-container font-bold text-lg mb-4 block">01</span>
+<h3 class="font-headline-md mb-4 uppercase">Consultoria de Marketing &amp; BI</h3>
+<p class="font-body-md text-on-surface-variant mb-8">
+                            Estruturação de dashboards gerenciais, modelagem de dados e integração de fontes para tomada de decisão em tempo real.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-2 mt-auto">
+<span class="bg-surface-muted border border-border-subtle px-3 py-1 font-label-caps rounded-full">Power BI</span>
+<span class="bg-surface-muted border border-border-subtle px-3 py-1 font-label-caps rounded-full">Looker Studio</span>
+<span class="bg-surface-muted border border-border-subtle px-3 py-1 font-label-caps rounded-full">SQL</span>
+</div>
+</div>
+<!-- Service Card 2 -->
+<div class="bg-primary-container text-white neo-border p-8 neo-shadow neo-hover transition-neo flex flex-col justify-between h-full group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-500"></div>
+<div>
+<span class="font-label-code text-white/70 font-bold text-lg mb-4 block">02</span>
+<h3 class="font-headline-md mb-4 uppercase">SEO Técnico &amp; Local</h3>
+<p class="font-body-md text-white/90 mb-8">
+                            Auditorias profundas de arquitetura web, otimização de performance (Core Web Vitals) e estratégias de dominação em buscas orgânicas.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-2 mt-auto">
+<span class="bg-black/20 px-3 py-1 font-label-caps rounded-full border border-white/20">Screaming Frog</span>
+<span class="bg-black/20 px-3 py-1 font-label-caps rounded-full border border-white/20">Ahrefs</span>
+<span class="bg-black/20 px-3 py-1 font-label-caps rounded-full border border-white/20">Schema.org</span>
+</div>
+</div>
+<!-- Service Card 3 -->
+<div class="bg-surface neo-border p-8 neo-shadow neo-hover transition-neo flex flex-col justify-between h-full group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-container/10 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-500"></div>
+<div>
+<span class="font-label-code text-secondary-container font-bold text-lg mb-4 block">03</span>
+<h3 class="font-headline-md mb-4 uppercase">Gestão de Tráfego &amp; CRO</h3>
+<p class="font-body-md text-on-surface-variant mb-8">
+                            Gestão de mídia de alta performance aliada a testes A/B contínuos para maximizar a taxa de conversão em cada etapa do funil.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-2 mt-auto">
+<span class="bg-surface-muted border border-border-subtle px-3 py-1 font-label-caps rounded-full">Google Ads</span>
+<span class="bg-surface-muted border border-border-subtle px-3 py-1 font-label-caps rounded-full">Meta Ads</span>
+<span class="bg-surface-muted border border-border-subtle px-3 py-1 font-label-caps rounded-full">VWO / Optimize</span>
+</div>
+</div>
+<!-- Service Card 4 -->
+<div class="bg-surface neo-border p-8 neo-shadow neo-hover transition-neo flex flex-col justify-between h-full group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-500"></div>
+<div>
+<span class="font-label-code text-on-surface font-bold text-lg mb-4 block">04</span>
+<h3 class="font-headline-md mb-4 uppercase">Planejamento Anual &amp; CRM</h3>
+<p class="font-body-md text-on-surface-variant mb-8">
+                            Estruturação de planos de marketing integrados (GTM) e implementação técnica de réguas de relacionamento em CRMs enterprise.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-2 mt-auto">
+<span class="bg-surface-muted border border-border-subtle px-3 py-1 font-label-caps rounded-full">Salesforce</span>
+<span class="bg-surface-muted border border-border-subtle px-3 py-1 font-label-caps rounded-full">HubSpot</span>
+<span class="bg-surface-muted border border-border-subtle px-3 py-1 font-label-caps rounded-full">ActiveCampaign</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface border-t-4 border-on-background dark:border-surface w-full">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1 space-y-6">
+<div class="font-display text-headline-md font-bold text-on-surface">Lucas A. R.</div>
+<p class="font-body-md text-on-surface-variant max-w-xs">Engenharia de Performance e Estratégia de Dados para operações que exigem precisão e escala.</p>
+<div class="font-body-md text-on-surface">
+                    © 2024 Lucas Antignani Rizzieri. Todos os direitos reservados.
+                </div>
+</div>
+<div class="col-span-1 md:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-8">
+<div class="flex flex-col space-y-4">
+<h4 class="font-label-caps text-on-surface-variant uppercase tracking-widest border-b-2 border-primary-container pb-2 inline-block">Conexão</h4>
+<a class="font-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed underline transition-colors duration-200" href="#">LinkedIn</a>
+<a class="font-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed underline transition-colors duration-200" href="#">Instagram</a>
+<a class="font-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed underline transition-colors duration-200" href="#">WhatsApp</a>
+</div>
+<div class="flex flex-col space-y-4">
+<h4 class="font-label-caps text-on-surface-variant uppercase tracking-widest border-b-2 border-secondary-container pb-2 inline-block">Legal</h4>
+<a class="font-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed underline transition-colors duration-200" href="#">Termos de Uso</a>
+<a class="font-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed underline transition-colors duration-200" href="#">Privacidade</a>
+</div>
+</div>
+</div>
+</footer>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</body></html>
