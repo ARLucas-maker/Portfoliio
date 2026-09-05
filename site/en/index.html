@@ -315,23 +315,37 @@
                         Go to full blog <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
                     </a>
                 </div>
-                <div id="wp-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Loading skeletons (replaced by the WordPress API fetch) -->
-                    <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4">
-                        <div class="h-4 w-1/3 bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-6 w-full bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-20 w-full bg-white/10 rounded animate-pulse"></div>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4">
-                        <div class="h-4 w-1/3 bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-6 w-full bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-20 w-full bg-white/10 rounded animate-pulse"></div>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4">
-                        <div class="h-4 w-1/3 bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-6 w-full bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-20 w-full bg-white/10 rounded animate-pulse"></div>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
+                            <h3 class="font-display text-lg font-bold text-white hover:text-accent transition-colors"><a href="/en/blog/" class="hover:text-accent">Programmatic SEO: organic scale without losing quality</a></h3>
+                            <p class="text-zinc-400 text-sm leading-relaxed">How to build programmatic content architectures that multiply demand inflow while keeping relevance...</p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-white/10">
+                            <a href="/en/blog/" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Read article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+                    <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
+                            <h3 class="font-display text-lg font-bold text-white hover:text-accent transition-colors"><a href="/en/blog/" class="hover:text-accent">A/B testing with statistical significance in practice</a></h3>
+                            <p class="text-zinc-400 text-sm leading-relaxed">From hypothesis framing to decision: how Marketing Science removes guesswork from conversion optimization...</p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-white/10">
+                            <a href="/en/blog/" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Read article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+                    <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
+                            <h3 class="font-display text-lg font-bold text-white hover:text-accent transition-colors"><a href="/en/blog/" class="hover:text-accent">Technical SEO automation with Python</a></h3>
+                            <p class="text-zinc-400 text-sm leading-relaxed">Crawls, indexing monitoring and fix prioritization: the stack I use to scale technical audits...</p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-white/10">
+                            <a href="/en/blog/" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Read article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -449,82 +463,6 @@
                 el.addEventListener('mouseleave', () => { el.style.transform = ''; });
             });
         })();
-
-        // ====== Content Hub: Headless WordPress fetch ======
-        async function fetchWordPressPosts() {
-            const container = document.getElementById('wp-posts-container');
-            const apiURL = 'https://arlucas.com.br/blog/wp-json/wp/v2/posts?_embed&per_page=3';
-            try {
-                const response = await fetch(apiURL);
-                if (!response.ok) throw new Error('API request failed');
-                const posts = await response.json();
-                if (!posts.length) { container.innerHTML = getStaticFallbackHTML(); return; }
-                container.innerHTML = '';
-                posts.forEach(post => {
-                    let imageUrl = '';
-                    try {
-                        if (post._embedded && post._embedded['wp:featuredmedia']) {
-                            imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
-                        }
-                    } catch (e) { imageUrl = ''; }
-                    const title = post.title.rendered;
-                    const link = post.link;
-                    const date = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                    const excerpt = post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, '').substring(0, 140) + '...';
-                    container.innerHTML += `
-                        <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between">
-                            ${imageUrl ? `<div class="h-44 -mx-6 -mt-6 mb-6 overflow-hidden"><img src="${imageUrl}" alt="${title}" loading="lazy" class="w-full h-full object-cover opacity-80"></div>` : ''}
-                            <div class="space-y-3">
-                                <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>${date}</span>
-                                <h3 class="font-display text-lg font-bold text-white leading-snug hover:text-accent transition-colors"><a href="${link}" target="_blank" rel="noopener">${title}</a></h3>
-                                <p class="text-zinc-400 text-sm leading-relaxed">${excerpt}</p>
-                            </div>
-                            <div class="pt-5 mt-5 border-t border-white/10">
-                                <a href="${link}" target="_blank" rel="noopener" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5 transition-colors">Read article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                            </div>
-                        </article>`;
-                });
-            } catch (error) {
-                container.innerHTML = getStaticFallbackHTML();
-            }
-        }
-
-        // Static fallback (offline API or no posts)
-        function getStaticFallbackHTML() {
-            return `
-                <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
-                        <h3 class="font-display text-lg font-bold text-white hover:text-accent"><a href="/blog/" target="_blank" rel="noopener">Programmatic SEO: organic scale without losing quality</a></h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed">How to build programmatic content architectures that multiply demand inflow while keeping relevance...</p>
-                    </div>
-                    <div class="pt-5 mt-5 border-t border-white/10">
-                        <a href="/blog/" target="_blank" rel="noopener" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Read on blog <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </article>
-                <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
-                        <h3 class="font-display text-lg font-bold text-white hover:text-accent"><a href="/blog/" target="_blank" rel="noopener">A/B testing with statistical significance in practice</a></h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed">From hypothesis framing to decision: how Marketing Science removes guesswork from conversion optimization...</p>
-                    </div>
-                    <div class="pt-5 mt-5 border-t border-white/10">
-                        <a href="/blog/" target="_blank" rel="noopener" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Read on blog <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </article>
-                <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
-                        <h3 class="font-display text-lg font-bold text-white hover:text-accent"><a href="/blog/" target="_blank" rel="noopener">Technical SEO automation with Python</a></h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed">Crawls, indexing monitoring and fix prioritization: the stack I use to scale technical audits...</p>
-                    </div>
-                    <div class="pt-5 mt-5 border-t border-white/10">
-                        <a href="/blog/" target="_blank" rel="noopener" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Read on blog <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </article>`;
-        }
-
-        window.addEventListener('DOMContentLoaded', fetchWordPressPosts);
     </script>
 </body>
 </html>

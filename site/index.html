@@ -10,6 +10,13 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta name="theme-color" content="#0a0a0b">
     <meta name="author" content="Lucas Antignani Rizzieri">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-DNS-Prefetch-Control" content="on">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"></noscript>
 
     <!-- hreflang: par de idiomas bidirecional -->
     <link rel="alternate" hreflang="pt-BR" href="https://arlucas.com.br/">
@@ -31,13 +38,13 @@
     <meta name="twitter:description" content="Especialista em SEO & Growth com abordagem de Marketing Science. Programmatic SEO, CRO e testes estatísticos para gerar demanda orgânica que vira receita.">
 
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com" crossorigin="anonymous"></script>
     <!-- Google Fonts: Space Grotesk (display kinetic) + Plus Jakarta Sans (texto) + JetBrains Mono (labels) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 
     <script>
         tailwind.config = {
@@ -58,6 +65,9 @@
     </script>
 
     <style>
+    /* Performance: will-change, contain, content-visibility */
+    section, .reveal, .animate-in { content-visibility: auto; contain-intrinsic-size: 0 400px; }
+    .reveal { contain: layout paint; }
         /* ====== Kinetic/Motion core ====== */
         .hero-line { overflow: hidden; display: block; }
         .hero-line > span {
@@ -315,23 +325,37 @@
                         Ir para o blog completo <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
                     </a>
                 </div>
-                <div id="wp-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Skeletons de carregamento (substituídos pelo fetch da API do WordPress) -->
-                    <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4">
-                        <div class="h-4 w-1/3 bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-6 w-full bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-20 w-full bg-white/10 rounded animate-pulse"></div>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4">
-                        <div class="h-4 w-1/3 bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-6 w-full bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-20 w-full bg-white/10 rounded animate-pulse"></div>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4">
-                        <div class="h-4 w-1/3 bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-6 w-full bg-white/10 rounded animate-pulse"></div>
-                        <div class="h-20 w-full bg-white/10 rounded animate-pulse"></div>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
+                            <h3 class="font-display text-lg font-bold text-white hover:text-accent transition-colors"><a href="/blog/" class="hover:text-accent">Programmatic SEO: escala orgânica sem perder qualidade</a></h3>
+                            <p class="text-zinc-400 text-sm leading-relaxed">Como estruturar arquiteturas de conteúdo programáticas que multiplicam entrada de demanda mantendo relevância...</p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-white/10">
+                            <a href="/blog/" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Ler artigo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+                    <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
+                            <h3 class="font-display text-lg font-bold text-white hover:text-accent transition-colors"><a href="/blog/" class="hover:text-accent">Testes A/B com significância estatística na prática</a></h3>
+                            <p class="text-zinc-400 text-sm leading-relaxed">Do formulário de hipótese à decisão: como a Marketing Science elimina o achismo da otimização de conversão...</p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-white/10">
+                            <a href="/blog/" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Ler artigo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+                    <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
+                            <h3 class="font-display text-lg font-bold text-white hover:text-accent transition-colors"><a href="/blog/" class="hover:text-accent">Automação de SEO técnico com Python</a></h3>
+                            <p class="text-zinc-400 text-sm leading-relaxed">Crawls, monitoramento de indexação e priorização de correções: o stack que uso para escalar auditoria técnica...</p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-white/10">
+                            <a href="/blog/" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Ler artigo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -420,15 +444,19 @@
             const dot = document.getElementById('cursor-dot');
             const ring = document.getElementById('cursor-ring');
             let mx = -100, my = -100, rx = -100, ry = -100;
+            let rafId = null;
 
-            document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
-            (function loop() {
+            function update() {
                 rx += (mx - rx) * 0.16;
                 ry += (my - ry) * 0.16;
                 dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
                 ring.style.transform = `translate(${rx - 19}px, ${ry - 19}px) scale(${ring.classList.contains('is-hover') ? 1.7 : 1})`;
-                requestAnimationFrame(loop);
-            })();
+                dot.style.willChange = 'transform';
+                ring.style.willChange = 'transform';
+                rafId = requestAnimationFrame(update);
+            }
+            document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; }, { passive: true });
+            update();
 
             document.querySelectorAll('a, button, .magnetic').forEach(el => {
                 el.addEventListener('mouseenter', () => ring.classList.add('is-hover'));
@@ -436,95 +464,28 @@
             });
         })();
 
-        // ====== Botões magnéticos ======
+        // ====== Botões magnéticos (otimizados) ======
         (function () {
             if (!window.matchMedia('(pointer: fine)').matches) return;
             document.querySelectorAll('.magnetic').forEach(el => {
+                let rafId = null;
                 el.addEventListener('mousemove', (e) => {
-                    const r = el.getBoundingClientRect();
-                    const x = e.clientX - r.left - r.width / 2;
-                    const y = e.clientY - r.top - r.height / 2;
-                    el.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
+                    if (rafId) cancelAnimationFrame(rafId);
+                    rafId = requestAnimationFrame(() => {
+                        const r = el.getBoundingClientRect();
+                        const x = e.clientX - r.left - r.width / 2;
+                        const y = e.clientY - r.top - r.height / 2;
+                        el.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
+                        el.style.willChange = 'transform';
+                    });
+                }, { passive: true });
+                el.addEventListener('mouseleave', () => {
+                    if (rafId) cancelAnimationFrame(rafId);
+                    el.style.transform = '';
+                    el.style.willChange = 'auto';
                 });
-                el.addEventListener('mouseleave', () => { el.style.transform = ''; });
             });
         })();
-
-        // ====== Content Hub: fetch Headless WordPress ======
-        async function fetchWordPressPosts() {
-            const container = document.getElementById('wp-posts-container');
-            const apiURL = 'https://arlucas.com.br/blog/wp-json/wp/v2/posts?_embed&per_page=3';
-            try {
-                const response = await fetch(apiURL);
-                if (!response.ok) throw new Error('API request failed');
-                const posts = await response.json();
-                if (!posts.length) { container.innerHTML = getStaticFallbackHTML(); return; }
-                container.innerHTML = '';
-                posts.forEach(post => {
-                    let imageUrl = '';
-                    try {
-                        if (post._embedded && post._embedded['wp:featuredmedia']) {
-                            imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
-                        }
-                    } catch (e) { imageUrl = ''; }
-                    const title = post.title.rendered;
-                    const link = post.link;
-                    const date = new Date(post.date).toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' });
-                    const excerpt = post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, '').substring(0, 140) + '...';
-                    container.innerHTML += `
-                        <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between">
-                            ${imageUrl ? `<div class="h-44 -mx-6 -mt-6 mb-6 overflow-hidden"><img src="${imageUrl}" alt="${title}" loading="lazy" class="w-full h-full object-cover opacity-80"></div>` : ''}
-                            <div class="space-y-3">
-                                <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>${date}</span>
-                                <h3 class="font-display text-lg font-bold text-white leading-snug hover:text-accent transition-colors"><a href="${link}" target="_blank" rel="noopener">${title}</a></h3>
-                                <p class="text-zinc-400 text-sm leading-relaxed">${excerpt}</p>
-                            </div>
-                            <div class="pt-5 mt-5 border-t border-white/10">
-                                <a href="${link}" target="_blank" rel="noopener" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5 transition-colors">Ler artigo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                            </div>
-                        </article>`;
-                });
-            } catch (error) {
-                container.innerHTML = getStaticFallbackHTML();
-            }
-        }
-
-        // Fallback estático (API offline ou sem posts)
-        function getStaticFallbackHTML() {
-            return `
-                <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
-                        <h3 class="font-display text-lg font-bold text-white hover:text-accent"><a href="/blog/" target="_blank" rel="noopener">Programmatic SEO: escala orgânica sem perder qualidade</a></h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed">Como estruturar arquiteturas de conteúdo programáticas que multiplicam entrada de demanda mantendo relevância...</p>
-                    </div>
-                    <div class="pt-5 mt-5 border-t border-white/10">
-                        <a href="/blog/" target="_blank" rel="noopener" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Ler no blog <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </article>
-                <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
-                        <h3 class="font-display text-lg font-bold text-white hover:text-accent"><a href="/blog/" target="_blank" rel="noopener">Testes A/B com significância estatística na prática</a></h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed">Do formulário de hipótese à decisão: como a Marketing Science elimina o achismo da otimização de conversão...</p>
-                    </div>
-                    <div class="pt-5 mt-5 border-t border-white/10">
-                        <a href="/blog/" target="_blank" rel="noopener" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Ler no blog <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </article>
-                <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
-                        <h3 class="font-display text-lg font-bold text-white hover:text-accent"><a href="/blog/" target="_blank" rel="noopener">Automação de SEO técnico com Python</a></h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed">Crawls, monitoramento de indexação e priorização de correções: o stack que uso para escalar auditoria técnica...</p>
-                    </div>
-                    <div class="pt-5 mt-5 border-t border-white/10">
-                        <a href="/blog/" target="_blank" rel="noopener" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Ler no blog <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </article>`;
-        }
-
-        window.addEventListener('DOMContentLoaded', fetchWordPressPosts);
     </script>
 </body>
 </html>

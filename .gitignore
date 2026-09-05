@@ -10,6 +10,8 @@ lerna-debug.log*
 node_modules
 dist-ssr
 *.local
+.env
+.env.*
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +24,15 @@ dist-ssr
 *.sln
 *.sw?
 .originkit/
+
+# Legacy folders
+.agents
+legacy
+tempDeploy
+wp-admin
+export_temp
+*.zip
+deploy.cjs
+deploy.ps1
+mcp-run.ps1
+mcp-*.json

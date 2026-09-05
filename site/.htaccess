@@ -1,27 +1,95 @@
-# Site estático - arlucas.com.br
-Options -Indexes
+Options -Indexes +FollowSymLinks
 DirectoryIndex index.html
 
-# Página de erro -> 404 customizável (o index.html não deve capturar tudo)
-ErrorDocument 404 /index.html
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
 
-# Compressão
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+# Blocar acesso a arquivos sensíveis
+<FilesMatch "\.(env|git|htaccess|htpasswd|ini|log|sh|sql|xml|yaml|yml|json)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.env$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# WordPress core paths in /blog/
+RewriteRule ^blog/wp-admin(/.*)?$ /blog/wp-admin/$1 [L]
+RewriteRule ^blog/wp-content(/.*)?$ /blog/wp-content/$1 [L]
+RewriteRule ^blog/wp-includes(/.*)?$ /blog/wp-includes/$1 [L]
+RewriteRule ^blog/wp-login\.php$ /blog/wp-login.php [L]
+RewriteRule ^blog/wp-cron\.php$ /blog/wp-cron.php [L]
+
+# Passar /blog/ para WordPress
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^blog/ - [L]
+RewriteRule ^en/blog/ - [L]
+
+# Homepage estática: tudo o mais vai para index.html
+RewriteRule ^ /index.html [L]
 </IfModule>
 
-# Cache dos assets estáticos
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+  AddOutputFilterByType DEFLATE text/xml application/xml application/xml+rss text/x-component
+</IfModule>
+
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/svg+xml "access plus 1 month"
   ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
   ExpiresByType text/css "access plus 1 week"
   ExpiresByType application/javascript "access plus 1 week"
   ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
 </IfModule>
 
 <IfModule mod_headers.c>
-  Header set X-Content-Type-Options "nosniff"
-  Header set X-Frame-Options "SAMEORIGIN"
-  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  # Segurança
+  Header set X-Content-Type-Options "nosniff" always
+  Header set X-Frame-Options "SAMEORIGIN" always
+  Header set X-XSS-Protection "1; mode=block" always
+  Header set Referrer-Policy "strict-origin-when-cross-origin" always
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), fullscreen=(self), usb=(), magnetometer=(), gyroscope=(), accelerometer=()" always
+  Header set X-Permitted-Cross-Domain-Policies "none" always
+  Header set X-Download-Options "noopen" always
+  Header set X-Powered-By "" always
+  Header unset X-Powered-By
+
+  # HSTS (6 meses)
+  Header set Strict-Transport-Security "max-age=15768000; includeSubDomains; preload" always
+
+  # CSP (Content Security Policy)
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; media-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" always
+
+  # Cache de segurança
+  Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0" env=NO_CACHE
+  Header set Cache-Control "public, max-age=31536000, immutable" env=STATIC
+
+  # Cookies seguros
+  Header edit Set-Cookie ^(.*)$ $1; HttpOnly; Secure; SameSite=Strict
 </IfModule>
+
+<IfModule mod_security2.c>
+  SecRuleEngine On
+  SecRequestBodyAccess On
+  SecResponseBodyAccess Off
+  SecAuditEngine RelevantOnly
+  SecAuditLog /var/log/apache2/security_audit.log
+  SecFilterEngine On
+  SecFilterScanPOST On
+  SecRequestBodyLimit 10485760
+  SecRequestBodyNoFilesLimit 1048576
+  SecRequestBodyInMemoryLimit 131072
+</IfModule>
+
+ErrorDocument 404 /index.html
+ErrorDocument 403 /index.html

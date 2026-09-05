@@ -33,56 +33,78 @@ Este arquivo serve como **guia contextual permanente** para o Antigravity IDE, o
 ---
 
 ## 2. Stack Tecnológica & Arquitetura
-- **Framework:** React 19 + Vite 8
-- **Roteamento:** `react-router-dom` (SPA com `<ScrollToTop />` e âncoras suaves)
-- **Estilização:** Tailwind CSS 4 + Neo-Brutalismo Customizado (`src/index.css` e `src/App.css`)
-- **SEO & Metatags:** `react-helmet-async`
-- **Shader WebGL:** Componente nativo em Canvas/WebGL (`src/components/ShaderBackground.jsx`)
+- **Frontend:** HTML5, CSS3, Tailwind CSS 4, JavaScript Puro (Vanilla JS)
+- **Roteamento:** Server-side via `.htaccess` (Apache mod_rewrite)
+- **Blog:** WordPress headless via Hostinger hosting
+- **Hospedagem:** Hostinger (arlucas.com.br), plano com addon domain
+- **Deploy:** Hostinger MCP (`hostinger-api-mcp`) via stdio transport
+- **CI/CD:** Nenhum — deploy manual via Hostinger MCP
+
+### Detalhes da Hospedagem
+- **Hostinger Username:** `u836743426`
+- **Domain:** `arlucas.com.br`
+- **Order ID:** `1005503980`
+- **Root Directory:** `/home/u836743426/domains/arlucas.com.br/public_html`
+- **WordPress Blog PT-BR:** `/blog/` (locale: pt_BR)
+- **WordPress Blog EN:** `/en/blog/` (locale: en_US)
 
 ### Regras de Estilização & Limpeza de Código
 - **Sem CSS Legado Conflitante:** Nunca reinserir regras CSS globais legadas em `src/App.css` ou `src/index.css` que sobrescrevam utilitários do Tailwind (ex: seletores genéricos de headings, `.section`, `.brutalist-card` legados).
 - **Design System Puro:** Toda a estilização deve utilizar classes utilitárias do Tailwind 4 combinadas com as variáveis do `@theme` definidas em `src/index.css`.
 - **Performance de Cursor & DOM:** Não utilizar cursores customizados em JavaScript (`CustomCursor.jsx`) que interfiram na usabilidade nativa do navegador ou em dispositivos móveis.
 
-
 ---
 
 ## 3. Estrutura de Rotas e Páginas
-- `/` -> `src/pages/Home.jsx`:
-  - Hero com Shader WebGL dinâmico (`ShaderBackground.jsx`) e título de alto impacto.
-  - Grid de Serviços 01-04 (Consultoria de Marketing & Dados, SEO Técnico & Local com Scanner Interativo, Tráfego Pago & CRO com Calculadora de ROI, Planejamento & CRM).
-  - Seção de Autoridade & Performance baseada em dados reais.
-- `/sobre` -> `src/pages/About.jsx`:
-  - Hero com foto de perfil em moldura brutalista (`profile.jfif`).
-  - Trajetória Profissional em 3 cards elevados (Formação Acadêmica FIAP, Experiência de Mercado, Skills & Voluntariado).
-  - Seção de Diferenciais (*Por que escolher a Lucas A. R.?*).
-  - Conteúdo em Destaque (Vídeos do Instagram de SEO Local incorporados).
-- `/blog` -> `src/pages/Blog.jsx`:
-  - Listagem de artigos com tags, tempo de leitura e data de publicação.
-- `/blog/:slug` -> `src/pages/BlogPost.jsx`:
-  - Visualização de artigo individual com suporte a rich text, imagem destacada e CTA direto de WhatsApp.
+- `/` -> `site/index.html` (Homepage PT-BR, SEO, Growth & Marketing Science)
+- `/en/` -> `site/en/index.html` (Homepage EN)
+- `/about/` -> `site/about/index.html` (Sobre PT-BR)
+- `/en/about/` -> `site/en/about/index.html` (Sobre EN)
+- `/servicos/` -> `site/services/index.html` (Serviços PT-BR)
+- `/en/servicos/` -> `site/en/services/index.html` (Serviços EN)
+- `/contact/` -> `site/contact/index.html` (Contato PT-BR)
+- `/en/contact/` -> `site/en/contact/index.html` (Contato EN)
+- `/blog/` -> WordPress (Blog PT-BR, locale: pt_BR, instalado via Hostinger MCP)
+- `/en/blog/` -> WordPress (Blog EN, locale: en_US, instalado via Hostinger MCP)
 
 ---
 
 ## 4. Integração com WordPress (Blog Headless)
-- **Serviço Central:** `src/services/wordpress.js`
-- **Variável de Ambiente:** `VITE_WORDPRESS_API_URL` (padrão configurável no `.env` ou servidor).
-- **Fallback Automático:** Caso a API esteja temporariamente offline ou não configurada, o serviço utiliza mocks técnicos predefinidos sem quebrar a UI.
+- **Serviço de Hospedagem:** Hostinger MCP (`hostinger-api-mcp`)
+- **Ferramenta MCP:** `hosting_installWordPressV1` (instalação WordPress via API)
+- **Ferramenta MCP:** `hosting_deployStaticWebsite` (deploy de site estático)
+- **Ferramenta MCP:** `hosting_listWebsitesV1` (listar websites)
+- **Ferramenta MCP:** `hosting_listWordPressInstallationsV1` (listar instalações WP)
+- **Variável de Ambiente:** `HOSTINGER_USERNAME=u836743426`, `HOSTINGER_DOMAIN=arlucas.com.br`
+- **Autenticação:** OAuth 2.0 com PKCE (credenciais em `%APPDATA%\hostinger-mcp\credentials.json`)
+- **WordPress Root:** Já existe (`id: 30459633`) - sobrescrito por site estático
+- **Status:** WordPress PT-BR e EN instalados em `/blog/` e `/en/blog/` (requests aceitos)
 
 ---
 
-## 5. Design System Neo-Brutalismo (Google Stitch)
+## 5. Configuração MCP Hostinger
+- **Config Global:** `~/.config/opencode/opencode.jsonc`
+- **Config Projeto:** `opencode.json` (raiz do projeto)
+- **MCP Servers:**
+  - `hostinger` -> `hostinger-api-mcp` (todas as operações de hosting)
+  - `hostinger-wordpress` -> `hostinger-wordpress-mcp` (operações WordPress específicas)
+- **Autenticação:** OAuth via `hostinger-api-mcp --login` (credencial já configurada)
+- **Transporte:** stdio (padrão)
+- **Ferramentas Disponíveis:** 382 tools via `hosting_*`, `VPS_*`, `domain_*`, `mail_*`, etc.
+
+---
+
+## 6. Design System Neon-Brutalismo (HTML/CSS)
 - **Cores Principais:**
-  - Primary: `#0055ff` (Azul vibrante)
-  - Secondary: `#ffcc00` (Amarelo vibrante)
-  - Tertiary: `#ff6b00` (Laranja)
-  - WhatsApp / Ação: `#25D366` / `#4ADE80`
-  - Superfície: `#ffffff` e `#000000`
+  - Background: `#0a0a0b` (ink)
+  - Accent: `#ccff00` (neon green)
+  - Text: `#ffffff` (white), `#71717a` (zinc-400)
 - **Regras Visuais:**
-  - Bordas pretas sólidas de 4px (`border-4 border-black`).
-  - Sombras duras de alto contraste sem desfoque (`shadow-[6px_6px_0px_#000000]`, `shadow-[10px_10px_0px_#0055ff]`, etc.).
-  - Efeito flutuante em botões de conversão (`animate-float`).
+  - Backgrounds semi-transparentes: `bg-white/[0.03]`, `bg-white/5`
+  - Bordas sutis: `border border-white/10`
+  - Efeitos de hover com acento: `hover:border-accent/50`, `hover:text-accent`
+  - Animações: `reveal`, `heroUp`, `marquee`, `scrollPulse`
 - **Tipografia:**
-  - Títulos e Display: `Hanken Grotesk` (pesos 700, 800, 900)
-  - Dados, Código e Labels: `JetBrains Mono` (pesos 500, 700)
-  - Ícones: `Material Symbols Outlined`
+  - Display: `Space Grotesk` (pesos 500, 700)
+  - Body: `Plus Jakarta Sans` (pesos 400-800)
+  - Mono/Labels: `JetBrains Mono` (pesos 400, 700)

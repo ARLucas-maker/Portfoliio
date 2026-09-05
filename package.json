@@ -2,10 +2,9 @@
   "name": "portfolio",
   "private": true,
   "version": "1.0.0",
-  "description": "Static portfolio site for arlucas.com.br - source of truth is /site, deploy folder is /dist",
+  "description": "Static portfolio site for arlucas.com.br - source is /site, deploy to Hostinger",
   "type": "module",
   "scripts": {
-    "build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync.ps1",
-    "preview": "powershell -NoProfile -Command \"Start-Process 'dist/index.html'\""
+    "preview": "powershell -NoProfile -Command \"Start-Process 'site/index.html.standalone'\""
   }
 }

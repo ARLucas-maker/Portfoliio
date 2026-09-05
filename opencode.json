@@ -1,0 +1,1 @@
+{"$schema": "https://opencode.ai/config.json", "mcp": {"servers": {"hostinger": {"type": "local", "command": ["hostinger-api-mcp"], "environment": {"HOSTINGER_API_TOKEN": "{env:HOSTINGER_API_TOKEN}"}}, "hostinger-wordpress": {"type": "local", "command": ["hostinger-wordpress-mcp"], "environment": {"HOSTINGER_API_TOKEN": "{env:HOSTINGER_API_TOKEN}}}}}}

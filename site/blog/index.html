@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Lucas Antignani Rizzieri — SEO, Growth & Marketing Science</title>
+    <meta name="description" content="Artigos sobre SEO Programático, Marketing Science, CRO e Testes A/B. Experimentos, frameworks e aprendizados na fronteira entre busca orgânica e ciência de dados.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://arlucas.com.br/blog/">
+    <link rel="alternate" hreflang="pt-BR" href="https://arlucas.com.br/blog/">
+    <link rel="alternate" hreflang="en" href="https://arlucas.com.br/en/blog/">
+    <link rel="alternate" hreflang="x-default" href="https://arlucas.com.br/blog/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="theme-color" content="#0a0a0b">
+    <meta name="author" content="Lucas Antignani Rizzieri">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arlucas.com.br/blog/">
+    <meta property="og:title" content="Blog — Lucas Antignani Rizzieri — SEO, Growth & Marketing Science">
+    <meta property="og:description" content="Artigos sobre SEO Programático, Marketing Science, CRO e Testes A/B.">
+    <meta property="og:image" content="https://arlucas.com.br/favicon.svg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:site_name" content="Lucas Antignani Rizzieri">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog — Lucas Antignani Rizzieri — SEO, Growth & Marketing Science">
+    <meta name="twitter:description" content="Artigos sobre SEO Programático, Marketing Science, CRO e Testes A/B.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        ink: '#0a0a0b',
+                        accent: '#ccff00',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.in-view { opacity: 1; transform: translateY(0); }
+        @keyframes heroUp { to { transform: translateY(0); } }
+        .hero-line > span { display: block; transform: translateY(115%); animation: heroUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .hero-line > span { opacity: 1 !important; transform: none !important; animation: none; }
+        }
+    </style>
+</head>
+<body class="bg-ink text-zinc-100 font-sans antialiased selection:bg-accent selection:text-ink overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-ink/80 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="/" class="font-display text-xl font-bold tracking-tight" aria-label="Lucas Antignani Rizzieri — início">
+                arlucas<span class="text-accent">.</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400" aria-label="Navegação principal">
+                <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
+                <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
+                <a href="/blog/" class="hover:text-white transition-colors">Blog</a>
+                <span class="font-mono text-xs text-zinc-500" aria-hidden="true">/</span>
+                <a href="/en/" lang="en" class="font-mono text-xs uppercase tracking-wider text-zinc-500 hover:text-accent transition-colors" aria-label="Switch to English">EN</a>
+                <a href="#contato" class="px-4 py-2 rounded-full bg-accent text-ink font-bold hover:bg-white transition-colors duration-300">Vamos conversar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="relative min-h-[92vh] flex items-center px-6 pt-28 pb-20 overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(204,255,0,0.06),transparent_45%)]" aria-hidden="true"></div>
+            <div class="max-w-7xl mx-auto w-full relative z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 font-mono text-[11px] uppercase tracking-widest text-accent mb-8 hero-line"><span>
+                    <span class="w-2 h-2 rounded-full bg-accent inline-block animate-pulse mr-2" aria-hidden="true"></span>Blog
+                </span></div>
+                <h1 class="font-display font-bold tracking-tight leading-[0.95] text-5xl sm:text-7xl lg:text-8xl max-w-5xl">
+                    <span class="hero-line"><span style="animation-delay: 0.15s">Blog</span></span>
+                </h1>
+            </div>
+        </section>
+
+        <!-- POSTS -->
+        <section class="py-28 px-6 border-t border-white/10 bg-white/[0.015]">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-posts">
+                    <!-- Post 1 -->
+                    <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
+                            <h3 class="font-display text-lg font-bold text-white hover:text-accent transition-colors"><a href="/blog/" class="hover:text-accent">Programmatic SEO: escala orgânica sem perder qualidade</a></h3>
+                            <p class="text-zinc-400 text-sm leading-relaxed">Como estruturar arquiteturas de conteúdo programáticas que multiplicam entrada de demanda mantendo relevância...</p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-white/10">
+                            <a href="/blog/" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Ler artigo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
+                            <h3 class="font-display text-lg font-bold text-white hover:text-accent transition-colors"><a href="/blog/" class="hover:text-accent">Testes A/B com significância estatística na prática</a></h3>
+                            <p class="text-zinc-400 text-sm leading-relaxed">Do formulário de hipótese à decisão: como a Marketing Science elimina o achismo da otimização de conversão...</p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-white/10">
+                            <a href="/blog/" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Ler artigo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Post 3 -->
+                    <article class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="font-mono text-xs text-accent"><i class="fa-regular fa-calendar-days mr-1.5" aria-hidden="true"></i>2026</span>
+                            <h3 class="font-display text-lg font-bold text-white hover:text-accent transition-colors"><a href="/blog/" class="hover:text-accent">Automação de SEO técnico com Python</a></h3>
+                            <p class="text-zinc-400 text-sm leading-relaxed">Crawls, monitoramento de indexação e priorização de correções: o stack que uso para escalar auditoria técnica...</p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-white/10">
+                            <a href="/blog/" class="text-xs font-bold text-accent hover:text-white flex items-center gap-1.5">Ler artigo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-10 border-t border-white/10 px-6 text-zinc-500 text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p>© 2026 Lucas Antignani Rizzieri — SEO &amp; Growth. Todos os direitos reservados.</p>
+            <p class="font-mono text-xs text-zinc-600">arlucas.com.br · feito com HTML, CSS e JS puro</p>
+        </div>
+    </footer>
+</body>
+</html>
